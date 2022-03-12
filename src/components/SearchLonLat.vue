@@ -17,7 +17,7 @@
         @keyup.enter="handlelong"
         v-show="!isActive"
       />
-      <button @click="handleUrl">Go..</button>
+      <button @click="handleUrl" v-show="isShow">Go..</button>
     </div>
     <div class="upperSection" v-if="weather">
       <left-section />
@@ -44,6 +44,7 @@ export default {
       latitude: "",
       longitude: "",
       isActive: true,
+      isShow: false,
     };
   },
   components: { MidSection, RightSection, LowerSection, LeftSection },
@@ -55,7 +56,7 @@ export default {
     handlelong() {
       this.isActive = true;
       this.handleUrl();
-
+      this.isShow = true;
       console.log(this.longitude, "longitude");
     },
     async handleUrl() {
